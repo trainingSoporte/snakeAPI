@@ -1,6 +1,3 @@
-
-
-
 //par
 //impar
 //0 wtf
@@ -11,21 +8,62 @@
 // }
 
 const wtfParImpar = (numero, callback) => {
-
-    if (numero === 0) return callback('error ..WTF')
+    let error;
+    let result;
+    if (numero === 0) error = new Error('error ..WTF');
     else {
-        if (numero % 2 === 0) return callback(undefined,'Par');
-        else return callback(undefined,'Impar');
+        if (numero % 2 === 0) result = 'Par';
+        else result = 'Impar';
     }
-    callback();
+    callback(error,result);
 }
 
-let respuesta = wtfParImpar(2, (error,result) => {
-    console.log('llamada');
-    console.log(error);
-    console.log(result);
-    if (error) console.error(error);
-    else console.log(result);
+wtfParImpar(1, (error,result) => {
+    try {
+
+        console.log('llamada parametro 1');
+        console.log('error: '+error);
+        console.log('result: '+result);
+        console.log('resultados');
+        if(error)throw error;
+        console.log(result);
+
+    } catch (error) {
+        console.error(error);
+    }
+
+
+})
+
+wtfParImpar(2, (error,result) => {
+    try {
+
+        console.log('llamada parametro 2');
+        console.log('error: '+error);
+        console.log('result: '+result);
+        console.log('resultados');
+        if(error)throw error;
+        console.log(result);
+
+    } catch (error) {
+        console.error(error);
+    }
+
+})
+
+wtfParImpar(0, (error,result) => {
+    try {
+
+        console.log('llamada parametro 0');
+        console.log('error: '+error);
+        console.log('result: '+result);
+        console.log('resultados');
+        if(error)throw error;
+        console.log(result);
+
+    } catch (error) {
+        console.error(error);
+    }
 
 })
 

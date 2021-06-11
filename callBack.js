@@ -15,54 +15,54 @@ const wtfParImpar = (numero, callback) => {
         if (numero % 2 === 0) result = 'Par';
         else result = 'Impar';
     }
-    callback(error,result);
+    callback(error, result);
 }
 
-wtfParImpar(1, (error,result) => {
+wtfParImpar(1, (error, result) => {
     try {
 
         console.log('llamada parametro 1');
-        console.log('error: '+error);
-        console.log('result: '+result);
+        console.log('error: ' + error);
+        console.log('result: ' + result);
         console.log('resultados');
-        if(error)throw error;
+        if (error) throw error;
         console.log(result);
 
     } catch (error) {
-        console.error(error);
+        onsole.error(`${error.name} : ${error.message}`);
     }
 
 
 })
 
-wtfParImpar(2, (error,result) => {
+wtfParImpar(2, (error, result) => {
     try {
 
         console.log('llamada parametro 2');
-        console.log('error: '+error);
-        console.log('result: '+result);
+        console.log('error: ' + error);
+        console.log('result: ' + result);
         console.log('resultados');
-        if(error)throw error;
+        if (error) throw error;
         console.log(result);
 
     } catch (error) {
-        console.error(error);
+        onsole.error(`${error.name} : ${error.message}`);
     }
 
 })
 
-wtfParImpar(0, (error,result) => {
+wtfParImpar(0, (error, result) => {
     try {
 
         console.log('llamada parametro 0');
-        console.log('error: '+error);
-        console.log('result: '+result);
+        console.log('error: ' + error);
+        console.log('result: ' + result);
         console.log('resultados');
-        if(error)throw error;
+        if (error) throw error;
         console.log(result);
 
     } catch (error) {
-        console.error(error);
+        console.error(`${error.name} : ${error.message}`);
     }
 
 })

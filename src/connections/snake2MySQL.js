@@ -11,3 +11,4 @@ const dbSnake2 = {
 };
 
 module.exports = {MySql,dbSnake2,DataTypes, Model};
+

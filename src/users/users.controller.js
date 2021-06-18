@@ -1,7 +1,7 @@
 const userService = require('./users.service');
 
-const getUsers = ()=>{
-    return userService.getUsers();
+const getUsers = async()=>{
+    return await userService.getUsers();
 }
 
 module.exports = {getUsers};

@@ -1,5 +1,7 @@
-const {app} = require('./src/main');
+const {app, User} = require('./src/main');
 const {MySql,dbSnake2} = require('./src/connections/snake2MySQL');
+
+
 
 app.listen(3000,()=> console.log('Server listen port 3000..'));
 
@@ -44,6 +46,10 @@ app.listen(3000,()=> console.log('Server listen port 3000..'));
 // };
 
 
+const initWebServer = ()=>{
+
+}
+
 const initMySql = async(login)=>{
     try {
         let configDB = {
@@ -60,6 +66,8 @@ const initMySql = async(login)=>{
         console.log('test MySQL');
         await mysql.authenticate();
         console.log('OK connection..');
+        //Users
+        User.init(mysql);
 
 
     } catch (error) {

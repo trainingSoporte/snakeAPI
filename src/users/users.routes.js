@@ -6,9 +6,12 @@ const { getUsers } = require('./users.controller');
 router.get('/', (req, res) => {
 
     try {
-        let users = getUsers();
-        res.status(200);
-        res.send(users);
+        getUsers().then((users) => {
+            res.status(200);
+            res.send(users);
+        }).catch((error) => {
+            res.sendStatus(500);
+        });
 
     } catch (error) {
         console.error(error);

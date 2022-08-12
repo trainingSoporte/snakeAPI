@@ -1,23 +1,17 @@
-const {User} = require('./users.entity')
+const {User} = require('./users.entity.raw')
 
-
-// const users = [
-//     {
-//         username: 'adri',
-//         fullname: 'Adrian Ojeda',
-//         email: 'aojeda@claro.com.ar',
-//         password: '123'
-//     },
-//     {
-//         username: 'adri2',
-//         fullname: 'Adrian Ojeda',
-//         email: 'aojeda@claro.com.ar',
-//         password: '12366'
-//     }
-// ]
 
 const getUsers = async() => {
-    return await User.findAll();
+    return await User.getAll();
 }
 
-module.exports =  {getUsers};
+const getUser = async(id) => {
+    const user = await User.getId(id);
+    return user[0];  
+}
+
+const createUser = async(user) => {
+    return await User.create(user);
+}
+
+module.exports =  {getUsers,getUser,createUser};

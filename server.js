@@ -1,9 +1,13 @@
-const {app, User} = require('./src/main');
-const {MySql,dbSnake2} = require('./src/connections/snake2MySQL');
+const { app, User } = require('./src/main');
+const { MySql, dbSnake2 } = require('./src/connections/snake2MySQL');
+const { setSecret } = require('./authServer/authSecret');
+require('dotenv').config();
 
 
 
-app.listen(3000,()=> console.log('Server listen port 3000..'));
+
+
+app.listen(3000, () => console.log('Server listen port 3000..'));
 
 
 // //primer nivel
@@ -46,11 +50,18 @@ app.listen(3000,()=> console.log('Server listen port 3000..'));
 // };
 
 
-const initWebServer = ()=>{
+
+const initWebServer = () => {
+
+    setSecret(
+        {
+            secret: process.env.TOKEN_SECRET,
+            expire: process.env.TOKEN_EXPIRE
+        });
 
 }
 
-const initMySql = async(login)=>{
+const initMySql = async (login) => {
     try {
         let configDB = {
             database: dbSnake2.database,
@@ -58,7 +69,7 @@ const initMySql = async(login)=>{
             password: login.password,
             dbConfig: dbSnake2.dbConfig
         };
-        
+
         console.log(configDB);
 
         mysql = new MySql(configDB);
@@ -76,4 +87,5 @@ const initMySql = async(login)=>{
 }
 
 
-initMySql({username:'Adrian2',password:'123456'});
+initMySql({ username: 'Adrian2', password: '123456' });
+initWebServer();

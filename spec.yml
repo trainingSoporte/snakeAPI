@@ -7,6 +7,7 @@ servers:
 tags:
   - name: User
 components:
+
   schemas:
     user:
       type: object
@@ -22,6 +23,28 @@ components:
           type: string
           format: password
 paths:
+  /login:
+    post:
+      description: Inicio de sesion en el sistema
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                  format: password
+
+      responses:
+        '200':
+          description: OK
   /users:
     get:
       summary: Obtiene el listado de usuarios
@@ -36,3 +59,21 @@ paths:
                 $ref: "#/components/schemas/user"
       tags:
         - "User"
+    post:
+      summary: Crear Usuario Nuevo
+      description: ''
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        '201':
+          description: Operacion Exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+      tags:
+        - User

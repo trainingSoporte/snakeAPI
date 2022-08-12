@@ -1,6 +1,6 @@
 //ORM
 
-const { Sequelize, DataTypes, Model } = require('sequelize');
+const { Sequelize, DataTypes, Model,QueryTypes } = require('sequelize');
 
 const dbConfig = {
     host: '',
@@ -22,6 +22,6 @@ class MySql extends Sequelize {
 
 }
 
-module.exports = {MySql,DataTypes,Model};
+module.exports = {MySql,DataTypes,Model, QueryTypes};
 
 

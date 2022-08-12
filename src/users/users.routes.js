@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getUsers } = require('./users.controller');
+const { getUsers , createUser} = require('./users.controller');
 
 
-router.get('/', (req, res) => {
+router.get('/',authenticateUser ,(req, res) => {
 
     try {
         getUsers().then((users) => {
@@ -20,6 +20,16 @@ router.get('/', (req, res) => {
 
 });
 
+
+router.post("/" ,(req, res) => {
+    createUser(req.body).then(user => {
+        res.status(201);
+        res.send(user);
+    }).catch(error =>{
+        console.error(error);
+        res.sendStatus(500);
+    });
+});
 
 module.exports = router;
 
